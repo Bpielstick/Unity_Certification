@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SpawnWave
@@ -90,6 +91,15 @@ public class SpawnManager : MonoBehaviour
 
         _currentSpawnWave++;
 
-        StartCoroutine(SpawnWaveRoutine());
+        if (_currentSpawnWave >= spawnWaveList.Wave.Count)
+            StartCoroutine(EndRoutine());
+        else
+            StartCoroutine(SpawnWaveRoutine());
+    }
+
+    private IEnumerator EndRoutine()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("VictoryScene");
     }
 }

@@ -72,7 +72,7 @@ public class BossController : MonoBehaviour
         {
             foreach (Weapon weapon in _weapons)
             {
-                weapon.Shoot(_projectile);
+                weapon.Shoot(_projectile, 7);
             }
         }
     }

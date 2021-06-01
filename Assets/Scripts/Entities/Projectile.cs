@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
             if (damageable != null)
                 damageable.Damage(_ammo.damage);
             Instantiate(_hit, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlaySound(3);
             Destroy(gameObject);    
         }
     }

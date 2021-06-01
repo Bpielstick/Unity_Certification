@@ -1,4 +1,3 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/PlaybackEngines'
-Cmd: initializeCompiler
-
-Cmd: shutdown
+version https://git-lfs.github.com/spec/v1
+oid sha256:98cf6d4c6a6fd714a44381c498f8091a801742c06501bd2014463c14f5880e25
+size 175258

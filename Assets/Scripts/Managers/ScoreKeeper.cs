@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static ScoreKeeper _instance;
+    public static ScoreKeeper Instance
     {
-        
+        get
+        {
+            if (_instance == null)
+                Debug.Log("Score Keeper = Null");
+
+            return _instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        _instance = this;
     }
+
+
 }

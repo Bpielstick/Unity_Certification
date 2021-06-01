@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
 
             else if (_player.transform.position.y > transform.position.y)
             {
-                _thruster.Move(Vector3.up);
+                _thruster.Move(Vector3.up * 0.25f);
             }
         }
 
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         {
             if (_player.transform.position.x < transform.position.x && transform.position.x < 43)
             {
-                _weapon.Shoot(_projectile);
+                _weapon.Shoot(_projectile, 7);
             }
         }
     }

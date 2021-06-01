@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         else
         {
             playerController.projectileIndex = 0;
+            UIManager.Instance.UpdatePower(playerController.projectileIndex + 1);
         }   
     }
 
@@ -37,8 +39,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         _endState = true;
         _animator.SetTrigger("Explosion");
+        AudioManager.Instance.PlaySound(9);
         yield return new WaitForSeconds(0.5f);
 
+        SceneManager.LoadScene("DefeatScene");
         Destroy(gameObject);
         yield return null;
     }

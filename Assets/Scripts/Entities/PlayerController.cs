@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     private Vector3 _direction;
     private float _xDirection = 0, _yDirection = 0;
     private Thruster _thruster;
@@ -25,6 +24,7 @@ public class PlayerController : MonoBehaviour
         _weapon = GetComponent<Weapon>();
         _health = GetComponent<PlayerHealth>();
         _animator = GetComponentInChildren<Animator>();
+        AudioManager.Instance.PlaySound(2);
     }
 
     void Update()
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            _weapon.Shoot(_projectileList[projectileIndex]);
+            _weapon.Shoot(_projectileList[projectileIndex], projectileIndex + 4);
         }
     }
 
@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(_powerupPickup, other.transform.position, Quaternion.identity);
             if (projectileIndex < 2) { projectileIndex++; }
+            UIManager.Instance.UpdatePower(projectileIndex + 1);
+            UIManager.Instance.UpdateScore(500);
+            AudioManager.Instance.PlaySound(11);
             Destroy(other.gameObject);
             _health.Health = 2;
         }
